@@ -8,30 +8,14 @@ import Resultado from "./components/Resultado";
 import Spinner from "./components/Spinner";
 import Footer from "./components/Footer";
 
-const ContenedorFooter = styled.div`
-  justify-content: center;
-  width: 100%;
-  align-items: center;
-  display: block;
-  padding: 20px;
-  font-size: 20px;
-  font-weight: 300;
-  line-height: 1.5;
-  text-align: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
-
-  font-family: "Lato", sans-serif;
-`;
-
 const Contenedor = styled.div`
   max-width: 900px;
   margin: 0 auto;
   width: 90%;
   @media (min-width: 992px) {
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    column-gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1rem;
   }
 `;
 const Imagen = styled.img`
@@ -83,19 +67,19 @@ function App() {
     }
   }, [monedas]);
   return (
-    <Contenedor>
-      <Imagen src={ImagenCripto} alt="Imagen cripto" />
-      <div>
-        <Heading>Cotiza Criptomonedas al instante</Heading>
-        <Formulario setMonedas={setMonedas} />
+    <>
+      <Contenedor>
+        <Imagen src={ImagenCripto} alt="Imagen cripto" />
+        <div>
+          <Heading>Cotiza Criptomonedas al instante</Heading>
+          <Formulario setMonedas={setMonedas} />
 
-        {cargando && <Spinner />}
-        {resultado.PRICE && <Resultado resultado={resultado} />}
-      </div>
-      <ContenedorFooter>
-        <Footer />;
-      </ContenedorFooter>
-    </Contenedor>
+          {cargando && <Spinner />}
+          {resultado.PRICE && <Resultado resultado={resultado} />}
+        </div>
+      </Contenedor>
+      <Footer />;
+    </>
   );
 }
 
